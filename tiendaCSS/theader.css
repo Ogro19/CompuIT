@@ -1,0 +1,351 @@
+/* Estilos para la cabecera centrada */
+header {
+    background-color: #002b5c; /* Fondo oscuro para resaltar otros elementos */
+    padding: 15px 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor principal del contenido de la cabecera */
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Limitar ancho máximo */
+    gap: 15px; /* Espacio entre elementos */
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto; /* Alinear el logo a la izquierda */
+}
+
+.logo-container img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Contenedor de ubicación */
+.location-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #00bfa5;
+    text-align: left;
+}
+
+.location-container span {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.location-container a {
+    color: #00bfa5;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Selector de categoría */
+.category-container {
+    display: flex;
+    align-items: center;
+}
+
+.category-selector {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+}
+
+/* Barra de búsqueda */
+.search-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.search-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.search-button {
+    background-color: #00bfa5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #009688;
+}
+
+/* Icono del carrito */
+.cart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto; /* Alinear el carrito a la derecha */
+}
+
+.cart-link {
+    position: relative;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.cart-link:hover {
+    transform: scale(1.1);
+}
+
+.cart-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.cart-count {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+/* CSS para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo translúcido */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+/* Estilo para el enlace de ubicación */
+.location-container a {
+    color: #00bfa5;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.update-button {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.3s;
+}
+
+.update-button:hover {
+    background-color: #16a085;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 15% auto; /* Centrado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.close {
+    color: #333;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #e74c3c;
+}
+
+.submit-button {
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #16a085;
+}
+.cart-container {
+    position: relative;
+}
+
+.mini-cart {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 250px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.mini-cart h4 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.mini-cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mini-cart-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.view-cart-button {
+    display: block;
+    text-align: center;
+    background-color: #1abc9c;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.view-cart-button:hover {
+    background-color: #16a085;
+}
+/* User menu styles */
+.user-menu {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.user-link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #34495e;
+    text-decoration: none;
+}
+
+.user-dropdown a:hover {
+    background-color: #f4f4f4;
+    color: #1abc9c;
+}
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.user-dropdown a:hover {
+    background-color: #f4f4f4;
+}
+
+.user-menu:hover .user-dropdown {
+    display: block;
+}

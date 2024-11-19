@@ -1,0 +1,445 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2C3E50;
+    color: #ecf0f1;
+}
+
+h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #ff6b6b;
+    text-align: center; /* Centramos los títulos */
+}
+
+/* Header y Secciones de Encabezado */
+.header {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    font-size: 36px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Sección de convenios */
+.existing-conventions ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.existing-conventions ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #34495e;
+    padding: 15px;
+    border-left: 5px solid #1abc9c;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.existing-conventions ul li img {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.existing-conventions ul li:hover {
+    background-color: #1abc9c;
+    color: #2C3E50;
+    border-left: 5px solid #ecf0f1;
+}
+
+/* Sección de beneficios */
+.beneficios-convenios ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.beneficios-convenios ul li {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 5px solid #ff6b6b;
+    background-color: #1F2A37;
+    color: #ecf0f1;
+    transition: all 0.3s ease;
+}
+
+.beneficios-convenios ul li:hover {
+    background-color: #ff6b6b;
+    color: #2C3E50;
+    border-left: 5px solid #ecf0f1;
+}
+
+/* Estilo del Formulario en Convenios */
+.new-convention {
+    background-color: #2C3E50;
+    padding: 40px;
+    border-radius: 50px;
+    max-width: 700px;
+    margin: 30px auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.new-convention h2 {
+    font-size: 34px;
+    font-weight: bold;
+    color: #1abc9c;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.new-convention p {
+    font-size: 16px;
+    color: #ecf0f1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.new-convention form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre los campos del formulario */
+}
+
+.new-convention form label {
+    font-size: 16px;
+    color: #ecf0f1;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.new-convention form input,
+.new-convention form select,
+.new-convention form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    background-color: #3b4d61;
+    color: #ecf0f1;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.new-convention form input::placeholder,
+.new-convention form textarea::placeholder {
+    color: #bdc3c7;
+}
+
+.new-convention form textarea {
+    resize: none;
+    height: 120px;
+}
+
+.new-convention form input:focus,
+.new-convention form select:focus,
+.new-convention form textarea:focus {
+    border-color: #1abc9c;
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.5);
+}
+
+.new-convention form button {
+    background-color: #1abc9c;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.new-convention form button:hover {
+    background-color: #16a085;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .new-convention {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .new-convention form {
+        gap: 15px;
+    }
+}
+
+/* Call-to-Action */
+.cta-header {
+    text-align: center;
+    background-color: #1abc9c;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.cta-header h1 {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.cta-header p {
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
+.cta-button-header {
+    background-color: #ff6b6b;
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.cta-button-header:hover {
+    background-color: #ff4757;
+}
+
+/* Carrusel de universidades */
+.universidades-carousel {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.swiper-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 30px 0;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centramos el contenido verticalmente */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido detrás de cada logo */
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Aseguramos que todas las cajas sean del mismo tamaño */
+    height: 250px; /* Ajusta la altura fija para un tamaño consistente */
+    max-height: 250px; /* Limita la altura máxima */
+}
+
+.swiper-slide img {
+    max-width: 150px; /* Ajusta el tamaño máximo para que las imágenes sean más grandes */
+    min-width: 120px; /* Establece un tamaño mínimo para mantener uniformidad */
+    height: auto;
+    max-height: 100px; /* Limita la altura máxima de las imágenes */
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.swiper-slide:hover img {
+    transform: rotate(10deg); /* Rotación ligera en hover para dinamismo */
+}
+
+.swiper-slide p {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: auto;
+    text-align: center; /* Centramos el texto debajo del logo */
+}
+
+/* Paginación personalizada */
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #ff6b6b;
+    opacity: 1;
+    transition: background 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #1abc9c;
+}
+
+/* Sección de información adicional */
+.info-adicional {
+    background-color: #34495e;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+}
+
+.info-adicional h2 {
+    font-size: 28px;
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-adicional p {
+    font-size: 16px;
+    color: #ecf0f1;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.info-adicional .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-gap: 20px; /* Espacio entre columnas */
+}
+
+.info-adicional .benefit-item {
+    background-color: #1F2A37;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Centramos el texto en cada bloque */
+}
+
+.info-adicional .benefit-item h3 {
+    font-size: 18px;
+    color: #1abc9c;
+    margin-bottom: 10px;
+}
+
+.info-adicional .benefit-item p {
+    font-size: 14px;
+    color: #ecf0f1;
+}
+
+.info-adicional .benefit-item:hover {
+    background-color: #1abc9c;
+    color: #2C3E50;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .info-adicional .benefits-grid {
+        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+}
+
+
+/* Botones de navegación */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 1;
+}
+
+/* Botones de navegación */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 1;
+}
+
+
+/* Paginación personalizada */
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #ff6b6b;
+    opacity: 1;
+    transition: background 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #1abc9c;
+}
+
+/* Botones de navegación */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 1;
+}
+
+/* Bloque de beneficios */
+.benefits-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.benefit-item img {
+    max-width: 80px;
+    margin-bottom: 15px;
+}
+
+.benefit-item p {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Footer */
+footer {
+    background-color: #2C3E50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 5px solid #1abc9c;
+}
+
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #16a085;
+}

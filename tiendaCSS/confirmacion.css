@@ -1,0 +1,102 @@
+/* Contenedor principal */
+.confirmation-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Encabezado */
+.confirmation-container h1 {
+    font-size: 2em;
+    color: #1abc9c;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Información de pedido */
+.confirmation-container p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Resumen del pedido */
+.order-summary h2 {
+    font-size: 1.5em;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.order-summary h3 {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.order-summary p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+/* Lista de productos */
+.product-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.product-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1em;
+    color: #333;
+}
+
+.product-list li:last-child {
+    border-bottom: none;
+}
+
+/* Pie de página de confirmación */
+.confirmation-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1em;
+    color: #555;
+}
+
+.confirmation-footer a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.confirmation-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de volver a la tienda */
+.continue-shopping-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.continue-shopping-button:hover {
+    background-color: #16a085;
+}

@@ -1,0 +1,195 @@
+/* Variables y configuración base */
+:root {
+    --sidebar-width-collapsed: 60px;
+    --sidebar-width-expanded: 240px;
+    --sidebar-width-mobile: 50px;
+    --sidebar-width-mobile-expanded: 200px;
+    --sidebar-bg-color: #2c3e50;
+    --hover-bg-color: #1abc9c;
+    --text-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --transition-speed: 0.4s;
+    --transition-timing: ease;
+    --profile-image-size: 70px;
+    --icon-size: 24px;
+  }
+  
+  /* Mixins de transición reutilizables */
+  @property --transition-all {
+    syntax: '*';
+    inherits: true;
+    initial-value: all var(--transition-speed) var(--transition-timing);
+  }
+  
+  /* Estilos base del sidebar */
+  .sidebar {
+    width: var(--sidebar-width-collapsed);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--sidebar-bg-color);
+    color: var(--text-color);
+    padding: 15px 0;
+    box-shadow: 3px 0 15px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+    transition: 
+      width var(--transition-speed) var(--transition-timing),
+      transform var(--transition-speed) var(--transition-timing);
+    will-change: width, transform;
+  }
+  
+  .sidebar:hover {
+    width: var(--sidebar-width-expanded);
+    overflow-y: auto;
+  }
+  
+  /* Scrollbar personalizado */
+  .sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .sidebar::-webkit-scrollbar-track {
+    background: var(--sidebar-bg-color);
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background: var(--hover-bg-color);
+    border-radius: 3px;
+  }
+  
+  /* Perfil de usuario */
+  .profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 10px 0;
+  }
+  
+  .profile-image {
+    width: var(--profile-image-size);
+    height: var(--profile-image-size);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 10px var(--shadow-color);
+    transition: transform var(--transition-speed) var(--transition-timing);
+    will-change: transform;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Contenedor de usuario */
+  .username-container {
+    margin: 12px 0 25px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 
+      opacity var(--transition-speed) var(--transition-timing),
+      visibility var(--transition-speed) var(--transition-timing);
+  }
+  
+  .sidebar:hover .username-container {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .username {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+  }
+  
+  /* Menú */
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .menu li {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    transition: 
+      padding-left var(--transition-speed) var(--transition-timing),
+      background-color var(--transition-speed) var(--transition-timing);
+  }
+  
+  .menu li:hover {
+    padding-left: 25px;
+    background-color: var(--hover-bg-color);
+  }
+  
+  .menu li img {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  
+  .menu li a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: 
+      opacity var(--transition-speed) var(--transition-timing),
+      transform var(--transition-speed) var(--transition-timing);
+    will-change: opacity, transform;
+  }
+  
+  .menu li a span {
+    display: none;
+  }
+  
+  .sidebar:hover .menu li a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .sidebar:hover .menu li a span {
+    display: inline-block;
+  }
+  
+  /* Optimizaciones para dispositivos móviles */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: var(--sidebar-width-mobile);
+    }
+  
+    .sidebar:hover {
+      width: var(--sidebar-width-mobile-expanded);
+    }
+    
+    .profile-image {
+      width: calc(var(--profile-image-size) * 0.85);
+      height: calc(var(--profile-image-size) * 0.85);
+    }
+  }
+  
+  /* Optimizaciones para reducir motion */
+  @media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .profile-image,
+    .menu li,
+    .menu li a {
+      transition: none;
+    }
+  }

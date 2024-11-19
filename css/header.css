@@ -1,0 +1,68 @@
+:root {
+    --primary-color: #1abc9c;
+    --secondary-color: #3498db;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-left: 60px;
+    transition: margin-left 0.3s ease;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.logo img {
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.slogan {
+    flex: 1;
+    text-align: center;
+}
+
+.slogan p {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 1px 1px 4px var(--shadow-color);
+}
+
+.sidebar:hover ~ .header,
+.sidebar:hover + .header + .main-content {
+    margin-left: 220px;
+}
+
+.main-content {
+    margin-left: 60px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .header, .main-content {
+        margin-left: 50px;
+    }
+
+    .sidebar:hover ~ .header,
+    .sidebar:hover ~ .header + .main-content {
+        margin-left: 200px;
+    }
+}
