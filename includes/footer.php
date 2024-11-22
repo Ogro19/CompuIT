@@ -14,15 +14,15 @@
     <title>Compu IT Marketing Digital - Inicio</title>
     
     <!-- Precargar recursos críticos -->
-    <link rel="preload" href="/compuIT2/css/footer.css" as="style">
-    <link rel="preload" href="/compuIT2/img/facebook.png" as="image">
-    <link rel="preload" href="/compuIT2/img/instagram.png" as="image">
+    <link rel="preload" href="css/footer.css" as="style">
+    <link rel="preload" href="img/facebook.png" as="image">
+    <link rel="preload" href="img/instagram.png" as="image">
     
     <!-- Estilos -->
-    <link rel="stylesheet" href="/compuIT2/css/footer.css">
+    <link rel="stylesheet" href="css/footer.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/compuIT2/img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
     <!-- Contenido principal -->
@@ -45,7 +45,7 @@
                                rel="noopener noreferrer"
                                class="social-link"
                                aria-label="Síguenos en Facebook">
-                                <img src="/compuIT2/img/facebook.png" 
+                                <img src="img/facebook.png" 
                                      alt=""
                                      width="32"
                                      height="32"
@@ -60,7 +60,7 @@
                                rel="noopener noreferrer"
                                class="social-link"
                                aria-label="Síguenos en Instagram">
-                                <img src="/compuIT2/img/instagram.png" 
+                                <img src="img/instagram.png" 
                                      alt=""
                                      width="32"
                                      height="32"
@@ -73,7 +73,7 @@
                             <a href="mailto:compuit23@gmail.com" 
                                class="social-link"
                                aria-label="Contáctanos por correo">
-                                <img src="/compuIT2/img/gmail.png" 
+                                <img src="img/gmail.png" 
                                      alt=""
                                      width="32"
                                      height="32"
@@ -88,7 +88,7 @@
                                rel="noopener noreferrer"
                                class="social-link"
                                aria-label="Visita nuestro canal de YouTube">
-                                <img src="/compuIT2/img/youtube.png" 
+                                <img src="img/youtube.png" 
                                      alt=""
                                      width="32"
                                      height="32"
@@ -103,7 +103,7 @@
                                rel="noopener noreferrer"
                                class="social-link"
                                aria-label="Conéctate en LinkedIn">
-                                <img src="/compuIT2/img/linkedin.png" 
+                                <img src="img/linkedin.png" 
                                      alt=""
                                      width="32"
                                      height="32"

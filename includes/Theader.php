@@ -72,7 +72,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php
                 if (isset($_SESSION['username'])) {
                     // Mostrar imagen de perfil y nombre del usuario
-                    $profileImage = $_SESSION['profileimage'] ?? '/compuIT2/uploads/default-profile.png';
+                    $profileImage = $_SESSION['profileimage'] ?? 'uploads/default-profile.png';
                     $username = $_SESSION['username'];
                     echo '<a href="#" class="user-link">';
                     echo '<img src="' . htmlspecialchars($profileImage) . '" alt="Perfil" class="user-icon">'; // Imagen de perfil del usuario
@@ -80,7 +80,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo '</a>';
                 } else {
                     // Si el usuario no ha iniciado sesión, mostrar un enlace de inicio de sesión
-                    echo '<a href="/compuIT2/Login.php" class="login-link">Iniciar Sesión</a>';
+                    echo '<a href="Login.php" class="login-link">Iniciar Sesión</a>';
                 }
                 ?>
                 <div class="user-dropdown" id="user-dropdown">
@@ -156,3 +156,4 @@ if (session_status() === PHP_SESSION_NONE) {
     </script>
 </body>
 </html>
+    

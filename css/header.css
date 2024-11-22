@@ -25,10 +25,10 @@
 }
 
 .logo img {
-    width: 100px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    max-width: 200px;
+    height: auto;
 }
+
 
 .slogan {
     flex: 1;

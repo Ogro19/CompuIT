@@ -11,7 +11,7 @@ if (!function_exists('initSession')) {
 
 if (!function_exists('renderUserProfile')) {
     function renderUserProfile() {
-        $defaultImage = '/compuIT2/uploads/default-profile.png';
+        $defaultImage = 'uploads/default-profile.png';
         $profileImage = $_SESSION['profileimage'] ?? $defaultImage;
         $username = $_SESSION['username'] ?? 'Invitado';
         
@@ -32,9 +32,8 @@ if (!function_exists('generateMenuItem')) {
     function generateMenuItem($icon, $url, $text) {
         return sprintf(
             '<li>
-                <img src="/compuIT2/img/%s" alt="%s" loading="lazy">
-                <a href="/compuIT2/%s"><span>%s</span></a>
-                
+                <img src="img/%s" alt="%s" loading="lazy">
+                <a href="%s"><span>%s</span></a>
              </li>',
             htmlspecialchars($icon),
             htmlspecialchars($text),
@@ -71,7 +70,7 @@ initSession();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Panel de navegación de Compu IT Marketing Digital">
     <title>Compu IT Marketing Digital - Sidebar</title>
-    <link rel="stylesheet" href="/compuIT2/css/sidebar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
 </head>
 <body>
 

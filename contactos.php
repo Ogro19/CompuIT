@@ -122,141 +122,167 @@ $controller->processForm();
             </section>
 
             <!-- Contenedor del Formulario -->
-            <section class="form-container">
-                <h2>Formulario de Contacto</h2>
-                <p class="subtitle">Completa el formulario para agendar tu consultoría gratuita y descubre cómo podemos ayudarte a mejorar tu negocio.</p>
-                
-                <?php if ($controller->isSuccess()): ?>
-                    <div class="alert alert-success">
-                        Tu consulta ha sido enviada exitosamente.
-                    </div>
-                <?php endif; ?>
+            <div class="form-container">
+    <h2>Formulario de Contacto</h2>
+    <p class="subtitle">Completa el formulario para agendar tu consultoría gratuita y descubre cómo podemos ayudarte a mejorar tu negocio.</p>
+    
+    <?php if ($controller->isSuccess()): ?>
+        <div class="alert alert-success">
+            Tu consulta ha sido enviada exitosamente.
+        </div>
+    <?php endif; ?>
 
-                <?php if (!empty($controller->getErrors())): ?>
-                    <div class="alert alert-error">
-                        <ul>
-                            <?php foreach ($controller->getErrors() as $error): ?>
-                                <li><?php echo htmlspecialchars($error); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+    <?php if (!empty($controller->getErrors())): ?>
+        <div class="alert alert-error">
+            <ul>
+                <?php foreach ($controller->getErrors() as $error): ?>
+                    <li><?php echo htmlspecialchars($error); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
 
-                <form class="form-section" method="POST" novalidate>
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" 
-                               id="nombre" 
-                               name="nombre" 
-                               required 
-                               placeholder="Tu nombre"
-                               value="<?php echo $_POST['nombre'] ?? ''; ?>">
-                    </div>
+    <form class="form-section" method="POST" novalidate>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" 
+                   id="nombre" 
+                   name="nombre" 
+                   required 
+                   placeholder="Tu nombre"
+                   value="<?php echo $_POST['nombre'] ?? ''; ?>"
+                   pattern="[a-zA-Z\s]{1,50}" 
+                   title="Solo se permiten letras y espacios. Máximo 50 caracteres.">
+        </div>
 
-                    <div class="form-group">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" 
-                               id="apellido" 
-                               name="apellido" 
-                               required 
-                               placeholder="Tu apellido"
-                               value="<?php echo $_POST['apellido'] ?? ''; ?>">
-                    </div>
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" 
+                   id="apellido" 
+                   name="apellido" 
+                   required 
+                   placeholder="Tu apellido"
+                   value="<?php echo $_POST['apellido'] ?? ''; ?>"
+                   pattern="[a-zA-Z\s]{1,50}" 
+                   title="Solo se permiten letras y espacios. Máximo 50 caracteres.">
+        </div>
 
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" 
-                               id="telefono" 
-                               name="telefono" 
-                               required 
-                               placeholder="Tu teléfono"
-                               value="<?php echo $_POST['telefono'] ?? ''; ?>">
-                    </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" 
+                   id="telefono" 
+                   name="telefono" 
+                   required 
+                   placeholder="Tu teléfono"
+                   value="<?php echo $_POST['telefono'] ?? ''; ?>"
+                   pattern="\d{10,15}" 
+                   title="Solo se permiten números con una longitud entre 10 y 15 dígitos.">
+        </div>
 
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" 
-                               id="email" 
-                               name="email" 
-                               required 
-                               placeholder="tu@email.com"
-                               value="<?php echo $_POST['email'] ?? ''; ?>">
-                    </div>
+        <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   required 
+                   placeholder="tu@email.com"
+                   value="<?php echo $_POST['email'] ?? ''; ?>">
+        </div>
 
-                    <div class="form-group">
-                        <label for="empresa">Empresa</label>
-                        <input type="text" 
-                               id="empresa" 
-                               name="empresa" 
-                               required 
-                               placeholder="Nombre de tu empresa"
-                               value="<?php echo $_POST['empresa'] ?? ''; ?>">
-                    </div>
+        <div class="form-group">
+            <label for="empresa">Empresa</label>
+            <input type="text" 
+                   id="empresa" 
+                   name="empresa" 
+                   required 
+                   placeholder="Nombre de tu empresa"
+                   value="<?php echo $_POST['empresa'] ?? ''; ?>"
+                   pattern="[a-zA-Z0-9\s]{1,50}" 
+                   title="Solo se permiten letras, números y espacios. Máximo 50 caracteres.">
+        </div>
 
-                    <div class="form-group">
-                        <label for="presupuesto">Presupuesto mensual</label>
-                        <select id="presupuesto" name="presupuesto" required>
-                            <option value="">Selecciona el presupuesto</option>
-                            <?php
-                            $presupuestos = ['Bajo', 'Medio', 'Alto'];
-                            foreach ($presupuestos as $p): ?>
-                                <option value="<?php echo $p; ?>" 
-                                    <?php echo (isset($_POST['presupuesto']) && $_POST['presupuesto'] === $p) ? 'selected' : ''; ?>>
-                                    <?php echo $p; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+        <div class="form-group">
+            <label for="presupuesto">Presupuesto mensual</label>
+            <select id="presupuesto" name="presupuesto" required>
+                <option value="">Selecciona el presupuesto</option>
+                <?php
+                $presupuestos = ['Bajo', 'Medio', 'Alto'];
+                foreach ($presupuestos as $p): ?>
+                    <option value="<?php echo $p; ?>" 
+                        <?php echo (isset($_POST['presupuesto']) && $_POST['presupuesto'] === $p) ? 'selected' : ''; ?>>
+                        <?php echo $p; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
-                    <div class="form-group">
-                        <label for="facturacion">Facturación actual</label>
-                        <select id="facturacion" name="facturacion" required>
-                            <option value="">Selecciona la facturación</option>
-                            <?php
-                            $facturaciones = ['Baja', 'Media', 'Alta'];
-                            foreach ($facturaciones as $f): ?>
-                                <option value="<?php echo $f; ?>"
-                                    <?php echo (isset($_POST['facturacion']) && $_POST['facturacion'] === $f) ? 'selected' : ''; ?>>
-                                    <?php echo $f; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+        <div class="form-group">
+            <label for="facturacion">Facturación actual</label>
+            <select id="facturacion" name="facturacion" required>
+                <option value="">Selecciona la facturación</option>
+                <?php
+                $facturaciones = ['Baja', 'Media', 'Alta'];
+                foreach ($facturaciones as $f): ?>
+                    <option value="<?php echo $f; ?>"
+                        <?php echo (isset($_POST['facturacion']) && $_POST['facturacion'] === $f) ? 'selected' : ''; ?>>
+                        <?php echo $f; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
-                    <div class="form-group">
-                        <label for="pais">País</label>
-                        <input type="text" 
-                               id="pais" 
-                               name="pais" 
-                               required 
-                               placeholder="Tu país"
-                               value="<?php echo $_POST['pais'] ?? ''; ?>">
-                    </div>
+        <div class="form-group">
+            <label for="pais">País</label>
+            <input type="text" 
+                   id="pais" 
+                   name="pais" 
+                   required 
+                   placeholder="Tu país"
+                   value="<?php echo $_POST['pais'] ?? ''; ?>"
+                   pattern="[a-zA-Z\s]{1,50}" 
+                   title="Solo se permiten letras y espacios. Máximo 50 caracteres.">
+        </div>
 
-                    <div class="form-group">
-                        <label for="url_sitio">URL del sitio web</label>
-                        <input type="url" 
-                               id="url_sitio" 
-                               name="url_sitio" 
-                               required 
-                               placeholder="https://tusitio.com"
-                               value="<?php echo $_POST['url_sitio'] ?? ''; ?>">
-                    </div>
+        <div class="form-group">
+            <label for="url_sitio">URL del sitio web</label>
+            <input type="url" 
+                   id="url_sitio" 
+                   name="url_sitio" 
+                   required 
+                   placeholder="https://tusitio.com"
+                   value="<?php echo $_POST['url_sitio'] ?? ''; ?>">
+        </div>
 
-                    <div class="form-group">
-                        <label for="problema">¿Qué problema enfrenta hoy tu empresa?</label>
-                        <textarea id="problema" 
-                                  name="problema" 
-                                  rows="4" 
-                                  required 
-                                  placeholder="Cuéntanos sobre tu problema..."><?php echo $_POST['problema'] ?? ''; ?></textarea>
-                    </div>
+        <div class="form-group">
+            <label for="problema">¿Qué problema enfrenta hoy tu empresa?</label>
+            <textarea id="problema" 
+                      name="problema" 
+                      rows="4" 
+                      required 
+                      placeholder="Cuéntanos sobre tu problema..."><?php echo $_POST['problema'] ?? ''; ?></textarea>
+        </div>
 
-                    <button type="submit" class="submit-button">¡Agenda tu consultoría gratuita!</button>
-                </form>
-            </section>
-        </main>
-    </div>
+        <button type="submit" class="submit-button">¡Agenda tu consultoría gratuita!</button>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const restrictInput = (element, regex) => {
+        element.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(regex, '');
+        });
+    };
+
+    restrictInput(document.getElementById('nombre'), /[^a-zA-Z\s]/g);
+    restrictInput(document.getElementById('apellido'), /[^a-zA-Z\s]/g);
+    restrictInput(document.getElementById('telefono'), /[^0-9]/g);
+    restrictInput(document.getElementById('empresa'), /[^a-zA-Z0-9\s]/g);
+    restrictInput(document.getElementById('pais'), /[^a-zA-Z\s]/g);
+});
+</script>
+
+    
 
     <?php include('includes/footer.php'); ?>
 

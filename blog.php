@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL);
+error_reporting(error_level: E_ALL);
 ini_set('display_errors', 1);
 
 class Database {
