@@ -47,7 +47,7 @@ $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         <p class="admin-welcome">
             Bienvenido al gestor de productos y servicios administrador. Aquí podrás añadir el producto o servicio que quieras y este se reflejará directamente hacia el apartado de ecommerce.
         </p>
-        <img src="/compuIT2/img/en-stock.png" alt="Stock">
+        <img src="img/en-stock.png" alt="Stock">
         <li><a href="notificaciones_stock_bajo.php">Stock </a></li>
         
         <a href="admin_add_product.php" class="btn-add-product">Agregar Producto</a>

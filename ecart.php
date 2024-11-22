@@ -149,7 +149,7 @@ if (!empty($cartItems)) {
 
             <!-- Formulario para seleccionar método de pago y proceder a compra -->
             <h2>Selecciona tu método de pago</h2>
-            <form action="/compuIT2/procesar_compra.php" method="POST"> <!-- Ruta ajustada para el archivo procesar_compra.php -->
+            <form action="procesar_compra.php" method="POST">
                 <label for="metodo_pago">Método de pago:</label>
                 <select name="metodo_pago" id="metodo_pago" required>
                     <option value="tarjeta">Tarjeta de Crédito/Débito</option>
