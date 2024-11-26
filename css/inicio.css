@@ -8,7 +8,13 @@
     --highlight-color: #ecf0f1;
     --shadow-color: rgba(0, 0, 0, 0.2);
     --box-shadow: 0 4px 10px var(--shadow-color);
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     --font-family: 'Arial', sans-serif;
+    --border-radius-standard: 10px;
+    --border-radius-large: 20px;
+    --transition-standard: 0.3s ease;
+    --padding-standard: 15px;
+    --padding-large: 20px;
 }
 
 * {
@@ -18,7 +24,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-family);
     background-color: #f7f7f9;
 }
 
@@ -33,12 +39,13 @@ body {
     width: 250px;
     background-color: var(--primary-bg-color);
     color: var(--text-color);
-    padding: 20px 0;
+    padding: var(--padding-large) 0;
     position: fixed;
     top: 0;
     bottom: 0;
     z-index: 1000;
     overflow-y: auto;
+    transition: transform var(--transition-standard), width var(--transition-standard);
 }
 
 /* Contenido principal */
@@ -48,6 +55,7 @@ body {
     padding: 50px;
     background-color: var(--secondary-bg-color);
     color: var(--text-color);
+    transition: margin-left var(--transition-standard);
 }
 
 /* Hero Section */
@@ -55,7 +63,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 20px;
+    padding: 50px var(--padding-large);
     background: url('img/fondo.jpg') no-repeat center center;
     background-size: cover;
 }
@@ -77,7 +85,7 @@ body {
 }
 
 .video-section iframe {
-    border-radius: 10px;
+    border-radius: var(--border-radius-standard);
     box-shadow: var(--box-shadow);
     max-width: 100%;
 }
@@ -90,7 +98,7 @@ body {
 .text-section h2 {
     font-size: 18px;
     font-weight: 300;
-    margin-bottom: 10px;
+    margin-bottom: var(--padding-standard);
     color: var(--secondary-text-color);
 }
 
@@ -104,39 +112,37 @@ body {
 .text-section p {
     font-size: 18px;
     color: var(--highlight-color);
-    margin: 20px 0;
+    margin: var(--padding-large) 0;
 }
 
-/* Botón de llamado a la acción */
-.cta-button {
-    padding: 15px 30px;
+/* Botones */
+.cta-button,
+.services-button,
+.button-container button {
+    padding: var(--padding-standard) 30px;
     background-color: var(--accent-color);
     color: var(--text-color);
     text-decoration: none;
+    border: none;
     border-radius: 5px;
     font-weight: bold;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color var(--transition-standard);
     display: inline-block;
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.services-button:hover,
+.button-container button:hover {
     background-color: var(--hover-accent-color);
 }
 
 /* Sección ¿Qué Hacemos? */
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #2C3E50;
-    color: #fff;
-}
-
 .services-section {
-    padding: 20px;
+    padding: var(--padding-large);
     text-align: center;
-    background-color: #1A252F; /* Fondo más oscuro */
+    background-color: #1A252F;
 }
 
 .services-section h2 {
@@ -146,39 +152,41 @@ body {
 
 .services-section p {
     font-size: 16px;
-    margin: 10px 0;
+    margin: var(--padding-standard) 0;
 }
 
 .services-grid {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: var(--padding-large);
+    padding: clamp(10px, 2vw, 20px);
 }
 
 .service-card {
-    background-color: #fff;
-    color: #2C3E50;
-    border-radius: 20px;
+    background-color: var(--text-color);
+    color: var(--primary-bg-color);
+    border-radius: var(--border-radius-large);
     width: 200px;
     height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px; /* Added margin-bottom for vertical spacing */
-    transition: transform 0.3s ease; /* Transition for hover effect */
+    box-shadow: var(--card-shadow);
+    margin-bottom: var(--padding-standard);
+    transition: transform var(--transition-standard);
+    padding: var(--padding-standard);
 }
 
 .service-card:hover {
-    transform: scale(1.05); /* Scale up on hover */
+    transform: scale(1.05);
 }
 
 .service-card img {
     width: 50px;
     height: 50px;
-    margin-bottom: 10px;
+    margin-bottom: var(--padding-standard);
 }
 
 .service-card h3 {
@@ -191,37 +199,20 @@ body {
     text-align: center;
 }
 
-.services-button {
-    background-color: #1ABC9C;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.services-button:hover {
-    background-color: #16A085;
-}
-
-/* Sección ¿Por Qué Elegir el Marketing Digital? */
+/* Sección Marketing Digital */
 .info-marketing {
     text-align: center;
-    padding: 60px 20px;
-    background-color: #1E1E2F; /* Color de fondo primario */
+    padding: 60px var(--padding-large);
+    background-color: #1E1E2F;
     color: var(--text-color);
     margin-top: 40px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-standard);
     box-shadow: var(--box-shadow);
 }
 
 .info-marketing h2 {
     font-size: 36px;
-    margin-bottom: 20px;
+    margin-bottom: var(--padding-large);
     font-weight: 700;
 }
 
@@ -237,7 +228,7 @@ body {
 
 .how-we-do-it {
     background-color: var(--primary-bg-color);
-    padding: 50px 20px;
+    padding: 50px var(--padding-large);
     text-align: center;
     color: var(--text-color);
 }
@@ -258,7 +249,7 @@ body {
     width: 100%;
     max-width: 400px;
     height: auto;
-    border-radius: 10px;
+    border-radius: var(--border-radius-standard);
     box-shadow: var(--box-shadow);
 }
 
@@ -266,28 +257,29 @@ body {
     width: 50%;
 }
 
+/* Acordeón */
 .accordion {
     background-color: var(--secondary-bg-color);
-    border-radius: 10px;
+    border-radius: var(--border-radius-standard);
     overflow: hidden;
     box-shadow: var(--box-shadow);
 }
 
 .accordion-item {
-    margin-bottom: 10px;
+    margin-bottom: var(--padding-standard);
 }
 
 .accordion-button {
     background-color: #2980b9;
     color: var(--text-color);
     border: none;
-    padding: 15px;
+    padding: var(--padding-standard);
     text-align: left;
     width: 100%;
     font-size: 18px;
     cursor: pointer;
     outline: none;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-standard);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -300,14 +292,14 @@ body {
 .accordion-content {
     background-color: var(--secondary-bg-color);
     color: var(--secondary-text-color);
-    padding: 0 15px;
+    padding: 0 var(--padding-standard);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height var(--transition-standard);
 }
 
 .accordion-content p {
-    margin: 15px 0;
+    margin: var(--padding-standard) 0;
 }
 
 .accordion-button[aria-expanded="true"] + .accordion-content {
@@ -315,10 +307,10 @@ body {
 }
 
 .accordion-button::after {
-    content: '\f078'; /* FontAwesome down arrow */
+    content: '\f078';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-standard);
 }
 
 .accordion-button[aria-expanded="true"]::after {
@@ -327,53 +319,163 @@ body {
 
 .button-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: var(--padding-large);
 }
 
-.button-container button {
-    background-color: var(--accent-color);
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
-}
-/* Responsiveness */
-@media (max-width: 768px) {
+/* Media Queries */
+@media (max-width: 1200px) {
+    .hero-content {
+        gap: clamp(20px, 3vw, 40px);
+        padding: clamp(15px, 3vw, 30px);
+    }
+
+    .text-section h1 {
+        font-size: clamp(32px, 5vw, 48px);
+    }
+
+    .text-section p {
+        font-size: clamp(16px, 2vw, 18px);
+    }
+
     .services-grid {
-        grid-template-columns: 1fr;
+        gap: clamp(15px, 2vw, 20px);
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 200px;
+        padding: clamp(30px, 4vw, 50px);
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .hero-section {
+        padding: clamp(30px, 4vw, 50px) clamp(15px, 2vw, 20px);
     }
 
     .service-card {
-        width: 100%;
+        width: calc(50% - 20px);
+        height: 180px;
     }
 
     .how-we-do-it-content {
-        flex-direction: column;
-        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
     }
 
-    .how-we-do-it-image,
-    .how-we-do-it-details {
-        width: 100%;
+    .info-marketing h2 {
+        font-size: clamp(28px, 4vw, 36px);
     }
+}
 
-    .hero-content {
-        flex-direction: column;
-    }
-
+@media (max-width: 768px) {
     .sidebar {
         width: 60px;
     }
 
     .main-content {
         margin-left: 60px;
-        padding: 20px;
+        padding: clamp(15px, 3vw, 20px);
     }
 
-    .hero-section h1 {
-        font-size: 36px;
+    .hero-content,
+    .how-we-do-it-content {
+        flex-direction: column;
+    }
+
+    .text-section,
+    .video-section,
+    .how-we-do-it-image,
+    .how-we-do-it-details {
+        flex: none;
+        width: 100%;
+    }
+
+    .services-grid {
+        justify-content: center;
+    }
+
+    .service-card {
+        width: calc(100% - 30px);
+        max-width: 400px;
+        height: auto;
+        min-height: 180px;
+        padding: clamp(15px, 3vw, 20px);
+    }
+
+    .accordion-button {
+        font-size: clamp(16px, 2.5vw, 18px);
+        padding: clamp(12px, 2vw, 15px);
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content {
+        margin-left: 0;
+        padding: var(--padding-standard);
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .hero-section {
+        padding: var(--padding-large) var(--padding-standard);
+    }
+
+    .text-section h1 {
+        font-size: clamp(28px, 4vw, 32px);
+    }
+
+    .text-section h2 {
+        font-size: clamp(16px, 2.5vw, 18px);
+    }
+
+    .cta-button,
+    .service-card {
+        width: 100%;
+    }
+
+    .services-section {
+        padding: var(--padding-standard) var(--padding-standard);
+    }
+
+    .info-marketing {
+        padding: 30px var(--padding-standard);
+    }
+
+    .info-marketing p,
+    .accordion-content {
+        font-size: clamp(14px, 2vw, 16px);
+    }
+
+    .how-we-do-it {
+        padding: 30px var(--padding-standard);
+    }
+}
+
+@media (max-width: 360px) {
+    .text-section h1 {
+        font-size: 24px;
+    }
+
+    .service-card {
+        padding: var(--padding-standard);
+        min-height: 150px;
+    }
+
+    .info-marketing h2 {
+        font-size: 24px;
+    }
+
+    .accordion-button {
+        font-size: 14px;
+        padding: var(--padding-standard);
     }
 }

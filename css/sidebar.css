@@ -193,3 +193,178 @@
       transition: none;
     }
   }
+
+  /* Pantallas grandes */
+@media (min-width: 1200px) {
+  .sidebar:hover {
+      width: var(--sidebar-width-expanded);
+  }
+
+  .profile-image {
+      width: var(--profile-image-size);
+      height: var(--profile-image-size);
+  }
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 992px) {
+  :root {
+      --profile-image-size: 60px;
+      --icon-size: 22px;
+  }
+
+  .sidebar {
+      width: var(--sidebar-width-tablet);
+  }
+
+  .sidebar:hover {
+      width: var(--sidebar-width-tablet-expanded);
+  }
+
+  .menu li {
+      padding: 10px 18px;
+  }
+
+  .menu li:hover {
+      padding-left: 22px;
+  }
+
+  .username {
+      font-size: 0.9rem;
+  }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+  :root {
+      --profile-image-size: 55px;
+      --icon-size: 20px;
+  }
+
+  .sidebar {
+      width: var(--sidebar-width-mobile);
+      padding: 12px 0;
+  }
+
+  .sidebar:hover {
+      width: var(--sidebar-width-mobile-expanded);
+  }
+
+  .profile-image-container {
+      margin-bottom: 20px;
+  }
+
+  .menu li {
+      padding: 10px 15px;
+  }
+
+  .menu li:hover {
+      padding-left: 20px;
+  }
+
+  .menu li a {
+      font-size: 0.875rem;
+  }
+
+  .username {
+      font-size: 0.85rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+  :root {
+      --profile-image-size: 50px;
+      --icon-size: 18px;
+  }
+
+  .sidebar {
+      width: var(--sidebar-width-small);
+      padding: 10px 0;
+  }
+
+  .sidebar:hover {
+      width: var(--sidebar-width-small-expanded);
+  }
+
+  .profile-image-container {
+      margin-bottom: 15px;
+  }
+
+  .menu li {
+      padding: 8px 12px;
+  }
+
+  .menu li:hover {
+      padding-left: 15px;
+  }
+
+  .username-container {
+      margin: 10px 0 20px;
+  }
+
+  .menu li a {
+      font-size: 0.8125rem;
+      margin-right: 12px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 375px) {
+  :root {
+      --profile-image-size: 45px;
+      --icon-size: 16px;
+  }
+
+  .sidebar {
+      padding: 8px 0;
+  }
+
+  .menu li {
+      padding: 8px 10px;
+  }
+
+  .menu li:hover {
+      padding-left: 12px;
+  }
+
+  .username {
+      font-size: 0.75rem;
+  }
+}
+
+/* Optimizaciones para modo landscape */
+@media (max-height: 480px) and (orientation: landscape) {
+  .sidebar {
+      padding: 8px 0;
+  }
+
+  .profile-image-container {
+      margin-bottom: 10px;
+  }
+
+  .menu li {
+      padding: 6px 15px;
+  }
+
+  .username-container {
+      margin: 8px 0 15px;
+  }
+}
+
+/* Optimizaciones para dispositivos de alta densidad de píxeles */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .profile-image {
+      box-shadow: 0 3px 8px var(--shadow-color);
+  }
+}
+
+/* Mantener las optimizaciones para reducir motion */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .profile-image,
+  .menu li,
+  .menu li a {
+      transition: none;
+  }
+}

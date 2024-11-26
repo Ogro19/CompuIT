@@ -18,7 +18,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .edit-profile-container {
@@ -26,7 +28,8 @@ body {
     padding: 40px 30px;
     border-radius: 15px;
     box-shadow: 0 0 20px var(--shadow-color);
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -62,11 +65,13 @@ body {
     background-color: var(--input-bg-color);
     color: var(--text-color);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
 }
 
 .edit-profile-form input:focus {
     border-color: var(--highlight-color);
     box-shadow: 0 0 8px var(--highlight-color);
+    outline: none;
 }
 
 .edit-profile-form input::placeholder {
@@ -83,6 +88,8 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 200px;
 }
 
 .btn-save-changes:hover {
@@ -91,9 +98,83 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* Media Queries para Tablet */
 @media (max-width: 768px) {
     .edit-profile-container {
-        width: 90%;
-        padding: 20px;
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .edit-profile-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .edit-profile-form input {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Media Queries para Móvil */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    .edit-profile-container {
+        padding: 20px 15px;
+        margin: 10px;
+    }
+
+    .edit-profile-container h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .edit-profile-form label {
+        font-size: 14px;
+    }
+
+    .edit-profile-form input {
+        padding: 8px;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .btn-save-changes {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Media Query para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    .edit-profile-container {
+        padding: 15px 10px;
+    }
+
+    .edit-profile-container h2 {
+        font-size: 18px;
+    }
+
+    .btn-save-changes {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Media Query para altura pequeña */
+@media (max-height: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .edit-profile-container {
+        padding: 20px 15px;
+    }
+
+    .edit-profile-form input {
+        margin-bottom: 10px;
     }
 }

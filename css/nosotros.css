@@ -326,3 +326,137 @@ body {
     background-color: #16a085;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .info-section div {
+        flex: 1 1 calc(50% - 20px); /* 2 columnas en tablet */
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablet */
+        gap: 15px;
+    }
+
+    .team-members {
+        gap: 15px;
+    }
+
+    .team-member {
+        width: calc(50% - 15px); /* 2 columnas */
+        height: auto;
+        padding: 15px;
+    }
+
+    .communication-content {
+        flex-direction: column;
+    }
+
+    .communication-info,
+    .communication-image {
+        max-width: 100%;
+    }
+
+    .communication-image img {
+        max-width: 250px;
+    }
+
+    .contact-cta {
+        padding: 30px 20px;
+    }
+}
+
+/* Media Queries para Móvil (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .info-section {
+        gap: 15px;
+    }
+
+    .info-section div {
+        flex: 1 1 100%; /* Una columna en móvil */
+    }
+
+    .info-section h2 {
+        font-size: 18px;
+    }
+
+    .info-section p {
+        font-size: 14px;
+    }
+
+    .communication-tabs {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tab {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 columna en móvil */
+    }
+
+    .value-item {
+        padding: 15px;
+    }
+
+    .value-item h3 {
+        font-size: 16px;
+    }
+
+    .team-member {
+        width: 100%; /* Una columna */
+    }
+
+    .history-section h2,
+    .values-section h2,
+    .team-section h2,
+    .contact-cta h2 {
+        font-size: 22px;
+    }
+
+    .history-section p,
+    .values-section p {
+        font-size: 16px;
+    }
+
+    .contact-cta {
+        padding: 20px 15px;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Media Query para pantallas pequeñas en landscape */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .communication-content {
+        flex-direction: row;
+    }
+
+    .team-member {
+        width: calc(33.333% - 15px); /* 3 columnas en landscape */
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en landscape */
+    }
+}

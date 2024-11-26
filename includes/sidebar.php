@@ -94,12 +94,13 @@ initSession();
                     <?php
                     echo generateMenuItem('producto.png', 'admin_products.php', 'Gestión de Productos');
                     echo generateMenuItem('video.png', 'subir_video.php', 'Subir Video');
+                    echo generateMenuItem('seo.png', 'panel_seo.php', 'Panel SEO');
+
                     ?>
                 <?php endif; ?>
 
                 <?php
                 // Panel SEO (disponible para todos)
-                echo generateMenuItem('seo.png', 'panel_seo.php', 'Panel SEO');
 
                 // Generar menú común
                 foreach ($commonMenuItems as $item) {

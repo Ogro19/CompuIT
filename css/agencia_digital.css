@@ -31,7 +31,7 @@ body, html {
     flex: 1;
     padding: 40px;
     background-color: var(--secondary-color);
-    max-width: 1700px; /* Ajuste el ancho máximo para que coincida con la referencia */
+    max-width: 1200px;
     margin: 20px auto;
     border-radius: 12px;
     box-shadow: 0 6px 30px var(--shadow-color);
@@ -125,6 +125,7 @@ footer {
     position: static;
 }
 
+/* Animaciones */
 @keyframes fadeInUp {
     from {
         transform: translateY(20px);
@@ -136,21 +137,82 @@ footer {
     }
 }
 
+/* Media Queries */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 30px;
+        max-width: 900px;
+    }
+
+    section h2 {
+        font-size: 22px;
+    }
+
+    section p {
+        font-size: 15px;
+    }
+}
+
 @media (max-width: 768px) {
     .main-content {
         padding: 20px;
-        margin: 10px;
-    }
-
-    section {
-        padding: 15px;
+        max-width: 700px;
     }
 
     .main-content h1 {
         font-size: 28px;
     }
 
+    section {
+        padding: 15px;
+    }
+
     section h2 {
         font-size: 20px;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .main-content h1 {
+        font-size: 24px;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
+
+    section p {
+        font-size: 13px;
+    }
+
+    ul li {
+        font-size: 12px;
+    }
+
+    .cta-button {
+        padding: 8px 15px;
+        font-size: 12px;
     }
 }

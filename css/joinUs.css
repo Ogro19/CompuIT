@@ -4,6 +4,28 @@
     --text-color: #ecf0f1;
     --background-color: #2c3e50;
     --shadow-color: rgba(0, 0, 0, 0.2);
+    /* Variables adicionales para valores repetidos */
+    --white: #ffffff;
+    --gray-light: #e0e0e0;
+    --gradient-start: #e67e22;
+    --gradient-end: #e74c3c;
+    --hover-primary: #16a085;
+    /* Espaciados comunes */
+    --space-xs: clamp(8px, 1.5vw, 10px);
+    --space-sm: clamp(10px, 2vw, 15px);
+    --space-md: clamp(15px, 3vw, 20px);
+    --space-lg: clamp(20px, 4vw, 30px);
+    --space-xl: clamp(30px, 5vw, 40px);
+    /* Fuentes */
+    --font-xs: clamp(12px, 2vw, 14px);
+    --font-sm: clamp(14px, 2.5vw, 16px);
+    --font-md: clamp(18px, 3vw, 24px);
+    --font-lg: clamp(24px, 4vw, 34px);
+    /* Transiciones */
+    --transition-normal: 0.3s ease;
+    /* Sombras */
+    --shadow-normal: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --shadow-large: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 body, html {
@@ -22,37 +44,34 @@ body, html {
 
 .main-content {
     flex-grow: 1;
-    padding: 40px;
+    padding: var(--space-xl);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 40px;
+    gap: var(--space-xl);
 }
 
-/* Contenedor de la Sección de Bienvenida */
+/* Sección de Bienvenida */
 .welcome-section {
     text-align: center;
     color: var(--text-color);
-    padding: 20px;
+    padding: var(--space-md);
     background: url('img/tu_imagen.png') no-repeat center center/cover;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px var(--shadow-color);
-    max-width: 800px;
+    border-radius: clamp(8px, 2vw, 12px);
+    box-shadow: var(--shadow-large);
+    max-width: min(90%, 800px);
     width: 100%;
     position: relative;
     overflow: hidden;
-    background-color: var(--secondary-color); /* Asegura que el fondo coincida */
+    background-color: var(--secondary-color);
 }
 
 .welcome-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
@@ -65,61 +84,65 @@ body, html {
 }
 
 .welcome-section h1 {
-    font-size: 28px;
+    font-size: var(--font-lg);
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: var(--space-xs);
 }
 
 .welcome-section p {
-    font-size: 14px;
-    color: #bdc3c7;
-    margin-bottom: 15px;
+    font-size: var(--font-xs);
+    color: var(--gray-light);
+    margin-bottom: var(--space-sm);
 }
 
-.welcome-section .cta-button {
-    background-color: var(--primary-color);
-    padding: 10px 20px;
+/* Botones */
+.cta-button, .submit-button {
     border: none;
     border-radius: 8px;
-    color: #ffffff;
-    font-size: 14px;
+    color: var(--white);
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all var(--transition-normal);
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-xs);
     text-transform: uppercase;
 }
 
-.welcome-section .cta-button:hover {
-    background-color: #16a085;
+.cta-button:hover {
+    background-color: var(--hover-primary);
     transform: translateY(-3px);
 }
 
 /* Contenedor del Formulario */
 .form-container {
     width: 100%;
-    max-width: 850px;
-    background-color: var(--secondary-color); /* Ajuste del fondo para coincidir con el resto del diseño */
-    padding: 40px 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: min(90%, 850px);
+    background-color: var(--secondary-color);
+    padding: var(--space-xl) var(--space-md);
+    border-radius: clamp(10px, 2vw, 15px);
+    box-shadow: var(--shadow-large);
     text-align: center;
     margin: 0 auto;
     position: relative;
 }
 
 .form-container h1 {
-    font-size: 34px;
+    font-size: var(--font-lg);
     font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 15px;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
     text-transform: uppercase;
 }
 
 .subtitle {
-    font-size: 15px;
-    color: #e0e0e0;
-    margin-bottom: 25px;
+    font-size: var(--font-xs);
+    color: var(--gray-light);
+    margin-bottom: var(--space-md);
     font-style: italic;
     line-height: 1.5;
 }
@@ -127,22 +150,24 @@ body, html {
 .form-section {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    width: 100%;
 }
 
+/* Campos del formulario */
 .form-section input,
 .form-section select,
 .form-section textarea {
-    width: calc(100% - 20px);
+    width: calc(100% - var(--space-lg));
     margin: 0 auto;
-    padding: 12px;
+    padding: var(--space-sm);
     background-color: rgba(58, 74, 88, 0.9);
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    color: #ffffff;
-    font-size: 14px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--white);
+    font-size: var(--font-xs);
+    transition: all var(--transition-normal);
 }
 
 .form-section input:focus,
@@ -150,44 +175,74 @@ body, html {
 .form-section textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(26, 188, 156, 0.5);
+    outline: none;
 }
 
 .file-upload label {
-    color: #e0e0e0;
+    color: var(--gray-light);
+    font-size: var(--font-xs);
 }
 
 .file-upload input {
     border: none;
-    background-color: #34495E;
-    color: #e0e0e0;
+    background-color: var(--secondary-color);
+    color: var(--gray-light);
     border-radius: 5px;
-    padding: 10px;
+    padding: var(--space-xs);
 }
 
 .submit-button {
-    background: linear-gradient(135deg, #e67e22, #e74c3c);
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    padding: var(--space-sm);
+    font-size: var(--font-sm);
+    width: calc(100% - var(--space-lg));
+    margin: 0 auto;
+    box-shadow: var(--shadow-normal);
 }
 
 .submit-button:hover {
-    background: linear-gradient(135deg, #d35400, #e67e22);
+    background: linear-gradient(135deg, #d35400, var(--gradient-start));
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-large);
+}
+
+/* Media Queries */
+@media (hover: none) {
+    .cta-button:hover,
+    .submit-button:hover {
+        transform: none;
+        box-shadow: var(--shadow-normal);
+    }
 }
 
 @media (max-width: 768px) {
-    .welcome-section h1 {
-        font-size: 26px;
+    .main-content {
+        padding: var(--space-md);
     }
+    
     .form-container {
-        padding: 20px;
-        max-width: 90%;
+        padding: var(--space-md) var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: var(--space-sm);
+        gap: var(--space-md);
+    }
+    
+    .form-container {
+        padding: var(--space-sm) var(--space-xs);
+    }
+    
+    .welcome-section {
+        padding: var(--space-sm);
+    }
+
+    .form-section input,
+    .form-section select,
+    .form-section textarea,
+    .submit-button {
+        width: calc(100% - var(--space-sm));
     }
 }
