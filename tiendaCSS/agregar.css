@@ -79,3 +79,100 @@ button:hover {
 .back-link:hover {
     color: #3498db;
 }
+/* Media Queries */
+/* Pantallas grandes */
+@media screen and (max-width: 1200px) {
+    .form-container {
+        max-width: 450px;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    .main-content {
+        height: auto;
+        min-height: 100vh;
+        padding: 15px;
+    }
+
+    .form-container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    input[type="file"] {
+        padding: 8px;
+        margin-bottom: 12px;
+    }
+}
+
+/* Móviles */
+@media screen and (max-width: 480px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    label {
+        font-size: 0.9em;
+        margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    input[type="file"] {
+        font-size: 0.9em;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+
+    .back-link {
+        margin-top: 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* Móviles pequeños */
+@media screen and (max-width: 320px) {
+    .form-container {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+        margin-bottom: 12px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+
+/* Dispositivos en modo landscape */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .main-content {
+        height: auto;
+        padding: 10px 15px;
+    }
+}

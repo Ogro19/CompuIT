@@ -169,3 +169,205 @@ button.update-btn:hover {
 .back-button:hover {
     background-color: #2980b9;
 }
+/* Media Queries para diferentes dispositivos */
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 992px) {
+    table {
+        width: 95%;
+        margin: 30px auto;
+        font-size: 0.95em;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+
+    td img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cart-container {
+        top: 15px;
+        right: 15px;
+    }
+
+    .cart-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+        margin: 20px auto;
+        font-size: 0.9em;
+    }
+
+    th, td {
+        padding: 12px;
+    }
+
+    td img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Hacer la tabla scrollable horizontalmente */
+    .main-content {
+        padding: 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px; /* Asegurar que la tabla no se comprima demasiado */
+    }
+
+    h3 {
+        font-size: 1.3em;
+        margin-right: 5%;
+    }
+
+    .cart-container {
+        top: 10px;
+        right: 10px;
+    }
+
+    .cart-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .cart-count {
+        font-size: 1em;
+        padding: 4px 10px;
+    }
+}
+
+/* Móviles */
+@media screen and (max-width: 576px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 0.85em;
+        margin: 15px auto;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    td img {
+        width: 50px;
+        height: 50px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+
+    input[type="number"] {
+        width: 50px;
+        padding: 4px;
+    }
+
+    .cart-container {
+        top: 5px;
+        right: 5px;
+    }
+
+    .cart-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cart-count {
+        font-size: 0.9em;
+        padding: 3px 8px;
+        margin-left: -10px;
+        margin-top: -10px;
+    }
+
+    .back-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        margin-right: 3%;
+    }
+}
+
+/* Móviles pequeños */
+@media screen and (max-width: 375px) {
+    table {
+        font-size: 0.8em;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    td img {
+        width: 45px;
+        height: 45px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+
+    .cart-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .cart-count {
+        font-size: 0.8em;
+        padding: 2px 6px;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* Optimizaciones para modo landscape */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .cart-container {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+/* Optimizaciones para dispositivos de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    td img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Optimizaciones para reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+    .cart-container,
+    button,
+    .back-button {
+        transition: none !important;
+    }
+}

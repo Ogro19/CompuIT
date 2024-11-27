@@ -138,3 +138,183 @@ p.no-products {
     font-weight: bold;
     background-color: #ffe6e6;
 }
+/* Laptops y pantallas grandes */
+@media screen and (max-width: 1200px) {
+    .product-table {
+        width: 95%;
+    }
+
+    .search-form input[type="text"] {
+        width: 250px;
+    }
+}
+
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 992px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .product-table {
+        width: 100%;
+    }
+
+    .search-form input[type="text"] {
+        width: 200px;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    p.admin-welcome {
+        font-size: 1.1em;
+    }
+
+    .search-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-form input[type="text"] {
+        width: 100%;
+        max-width: 300px;
+        margin-right: 0;
+    }
+
+    .search-form button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Hacer la tabla scrollable horizontalmente */
+    .product-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .product-table th,
+    .product-table td {
+        padding: 10px;
+    }
+}
+
+/* Móviles */
+@media screen and (max-width: 576px) {
+    body {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p.admin-welcome {
+        font-size: 1em;
+    }
+
+    a.btn-add-product {
+        display: block;
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px 20px;
+    }
+
+    .product-table th {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .product-table td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Móviles pequeños */
+@media screen and (max-width: 375px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .search-form input[type="text"],
+    .search-form button {
+        font-size: 0.9em;
+    }
+
+    .product-table th {
+        font-size: 0.8em;
+    }
+
+    .product-table td {
+        font-size: 0.8em;
+    }
+
+    img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Optimizaciones para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Optimizaciones para modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+    .product-table {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Optimizaciones para reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+/* Optimizaciones para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .form-container {
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Optimizaciones para reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+    button,
+    .back-link {
+        transition: none !important;
+    }
+}
+
+/* Optimizaciones para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
