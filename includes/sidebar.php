@@ -84,7 +84,7 @@ initSession();
             <ul class="menu">
                 <?php if (!isset($_SESSION['username'])): ?>
                     <?php
-                    echo generateMenuItem('inicio.png', 'Login.php', 'Iniciar Sesión');
+                    echo generateMenuItem('inicio.png', 'login.php', 'Iniciar Sesión');
                     echo generateMenuItem('registro.png', 'registro.php', 'Registrarse');
                     ?>
                 <?php endif; ?>
