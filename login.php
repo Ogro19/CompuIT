@@ -11,6 +11,7 @@
     <div class="login-container">
         <!-- Logo -->
         <div class="logo-wrapper">
+            <img src="assets/img/logo.jpg" alt="CompuIT Logo" class="logo-image">
         </div>
         
         <h1>Iniciar Sesión</h1>
