@@ -11,9 +11,9 @@
     <div class="login-container">
         <!-- Logo -->
         <div class="logo-wrapper">
-            <img src="assets/img/logo.jpg" alt="CompuIT Logo" class="logo-image">
+            <img src="img/logo.jpg" alt="CompuIT Logo" class="logo-image">
         </div>
-        
+
         <h1>Iniciar Sesión</h1>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
@@ -22,7 +22,7 @@
                 <input type="text" 
                        id="username" 
                        name="username" 
-                       placeholder="Usuario"
+                       placeholder="Usuario" 
                        required 
                        autocomplete="username">
             </div>
@@ -32,19 +32,19 @@
                 <input type="password" 
                        id="password" 
                        name="password" 
-                       placeholder="Contraseña"
+                       placeholder="Contraseña" 
                        required 
                        autocomplete="current-password">
             </div>
+
+            <!-- Botón de Ingreso -->
+            <button type="submit" name="login">Ingresar</button>
 
             <!-- Enlace de Registro -->
             <div class="register-link">
                 ¿No tienes cuenta? 
                 <a href="registro.php">Regístrate aquí</a>
             </div>
-
-            <!-- Botón de Ingreso -->
-            <button type="submit" name="login">Ingresar</button>
         </form>
 
         <?php
