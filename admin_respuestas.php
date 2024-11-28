@@ -10,13 +10,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 // Conexión a la base de datos
 $servername = "localhost";  // El servidor donde corre MySQL (en XAMPP es localhost)
-$username = "compuit";         // El usuario de MySQL (por defecto en XAMPP es root)
-$password = "compuit123";             // Sin contraseña (en XAMPP por defecto root no tiene contraseña)
-$dbname = "compuit_db";     // Nombre de la base de datos que creaste
-
+$username = "compuit";      // El usuario de MySQL
+$password = "compuit123";   // La contraseña de MySQL
+$dbname = "compuit_db";     // Nombre de la base de datos
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Corregido: usar $servername en lugar de $host
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo 'Conexión fallida: ' . $e->getMessage();
