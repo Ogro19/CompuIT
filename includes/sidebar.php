@@ -55,7 +55,7 @@ if (!isset($commonMenuItems)) {
         ['encuesta.png', 'joinUs.php', 'Únete a Compu IT'],
         ['contacto.png', 'contactos.php', 'Contáctanos'],
         ['perfil2.png', 'perfil.php', 'Perfil'],
-        ['logout.png', 'logout.php', 'Salir']
+        ['logout.png', '../logout.php', 'Salir'] // Ruta corregida aquí
     ];
 }
 
@@ -95,7 +95,6 @@ initSession();
                     echo generateMenuItem('producto.png', 'admin_products.php', 'Gestión de Productos');
                     echo generateMenuItem('video.png', 'subir_video.php', 'Subir Video');
                     echo generateMenuItem('seo.png', 'panel_seo.php', 'Panel SEO');
-
                     ?>
                 <?php endif; ?>
 

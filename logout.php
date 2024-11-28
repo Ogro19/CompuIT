@@ -11,6 +11,6 @@ $_SESSION = [];
 session_destroy();
 
 // Redirigir a la página de inicio de sesión
-header("Location: Login.php");
+header("Location: index.php");
 exit();
 ?>
