@@ -1,5 +1,6 @@
 <?php
 // Iniciar sesión si no está iniciada
+
 session_start();
 
 // Verificar si el usuario es admin

@@ -1,4 +1,4 @@
-<?php
+<?php 
 $servername = "localhost";  // El servidor donde corre MySQL (en XAMPP es localhost)
 $username = "compuit";         // El usuario de MySQL (por defecto en XAMPP es root)
 $password = "compuit123";             // Sin contraseña (en XAMPP por defecto root no tiene contraseña)
