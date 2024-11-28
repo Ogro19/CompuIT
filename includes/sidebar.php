@@ -95,6 +95,8 @@ initSession();
                     echo generateMenuItem('producto.png', 'admin_products.php', 'Gestión de Productos');
                     echo generateMenuItem('video.png', 'subir_video.php', 'Subir Video');
                     echo generateMenuItem('seo.png', 'panel_seo.php', 'Panel SEO');
+                    // Nuevo ítem para el Panel de Respuestas
+                    echo generateMenuItem('respuesta.png', 'admin_respuestas.php', 'Respuestas');
                     ?>
                 <?php endif; ?>
 
