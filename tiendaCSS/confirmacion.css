@@ -100,3 +100,58 @@
 .continue-shopping-button:hover {
     background-color: #16a085;
 }
+/* Media Queries para responsividad */
+@media screen and (max-width: 840px) {
+    .confirmation-container {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .confirmation-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .confirmation-container h1 {
+        font-size: 1.5em;
+    }
+
+    .order-summary h2 {
+        font-size: 1.3em;
+    }
+
+    .order-summary h3 {
+        font-size: 1.1em;
+    }
+
+    .product-list li {
+        flex-direction: column;
+        gap: 5px;
+        padding: 12px 0;
+    }
+
+    .continue-shopping-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .confirmation-container h1 {
+        font-size: 1.3em;
+    }
+
+    .confirmation-container p,
+    .order-summary p,
+    .product-list li,
+    .confirmation-footer {
+        font-size: 0.9em;
+    }
+
+    .continue-shopping-button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}

@@ -248,3 +248,143 @@
     background-color: #f4f4f4;
     border-radius: 10px;
 }
+
+/* Media Queries para responsividad */
+@media screen and (max-width: 1024px) {
+    .product-details {
+        max-width: 90%;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .product-detail-image {
+        width: 300px;
+    }
+
+    .reviews-section,
+    .leave-review {
+        max-width: 90%;
+        margin: 30px auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-details {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-detail-image {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .product-info {
+        width: 100%;
+    }
+
+    .product-info h1 {
+        font-size: 1.8em;
+    }
+
+    .product-info p {
+        font-size: 1.1em;
+    }
+
+    .product-info .price {
+        font-size: 1.6em;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .reviews-section h2 {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product-details {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .product-info h1 {
+        font-size: 1.5em;
+    }
+
+    .product-info p {
+        font-size: 1em;
+    }
+
+    .product-info .price {
+        font-size: 1.4em;
+    }
+
+    .add-to-cart-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .reviews-section {
+        padding: 15px;
+    }
+
+    .review {
+        padding: 12px;
+    }
+
+    .review-header {
+        gap: 10px;
+    }
+
+    .user-photo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .leave-review {
+        padding: 15px;
+    }
+
+    .leave-review h2 {
+        font-size: 1.4em;
+    }
+
+    .leave-review textarea {
+        min-height: 100px;
+        padding: 10px;
+    }
+
+    .leave-review button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .product-info h1 {
+        font-size: 1.3em;
+    }
+
+    .product-info .price {
+        font-size: 1.2em;
+    }
+
+    .reviews-section h2,
+    .leave-review h2 {
+        font-size: 1.2em;
+    }
+
+    .review .comment {
+        font-size: 0.9em;
+    }
+}

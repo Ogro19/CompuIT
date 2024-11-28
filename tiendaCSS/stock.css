@@ -107,3 +107,123 @@ button.decrease:hover {
 .btn-back:hover {
     background-color: #16a085;
 }
+/* Media Queries para responsividad */
+@media screen and (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    table {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    th, td {
+        padding: 12px 8px;
+        font-size: 0.95em;
+    }
+
+    th {
+        letter-spacing: 0.5px;
+    }
+
+    button {
+        padding: 8px 10px;
+        font-size: 1.1em;
+    }
+
+    .btn-back {
+        padding: 8px 16px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    table {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    th, td {
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+
+    th {
+        font-size: 0.8em;
+    }
+
+    form {
+        gap: 5px;
+    }
+
+    button {
+        padding: 6px 8px;
+        font-size: 1em;
+    }
+
+    .btn-back {
+        padding: 8px 14px;
+        font-size: 0.9em;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin-top: 12px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    th, td {
+        padding: 6px 3px;
+        font-size: 0.85em;
+    }
+
+    button {
+        padding: 5px 7px;
+        font-size: 0.9em;
+    }
+
+    form {
+        gap: 3px;
+    }
+
+    .btn-back {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    h1 {
+        font-size: 1.3em;
+        margin-top: 10px;
+    }
+}
+
+/* Media query para pantallas muy grandes */
+@media screen and (min-width: 1200px) {
+    .main-content {
+        max-width: 1200px;
+    }
+
+    table {
+        max-width: 1000px;
+    }
+
+    th, td {
+        padding: 18px;
+        font-size: 1.1em;
+    }
+
+    button {
+        padding: 12px 15px;
+        font-size: 1.3em;
+    }
+}
