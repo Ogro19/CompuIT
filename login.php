@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <!-- Logo -->
-        <div class="logo-wrapper">
-            <img src="img/logo.jpg" alt="CompuIT Logo" class="logo-image">
-        </div>
+
 
         <h1>Iniciar Sesión</h1>
 
