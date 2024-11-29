@@ -1,5 +1,10 @@
 <?php
 
+// Habilitar reporte de errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Controlador del formulario
 $pdo = require_once 'conexion.php';
 
@@ -18,7 +23,7 @@ class ContactFormController {
         }
 
         $formData = $this->sanitizeInput($_POST);
-        
+
         if ($this->validateForm($formData)) {
             $this->saveContact($formData);
         }
@@ -34,8 +39,8 @@ class ContactFormController {
 
     private function validateForm($data) {
         // Validación de campos requeridos
-        $requiredFields = ['nombre', 'apellido', 'telefono', 'email', 'empresa', 'presupuesto', 'facturacion', 'pais', 'url_sitio', 'problema'];
-        
+        $requiredFields = ['nombre', 'apellido', 'telefono', 'email', 'empresa', 'presupuesto', 'facturacion', 'pais', 'problema'];
+
         foreach ($requiredFields as $field) {
             if (empty($data[$field])) {
                 $this->errors[] = "El campo $field es requerido.";
@@ -43,13 +48,44 @@ class ContactFormController {
         }
 
         // Validación de email
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!empty($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = "El email no es válido.";
         }
 
-        // Validación de URL
-        if (!filter_var($data['url_sitio'], FILTER_VALIDATE_URL)) {
+        // Validación de URL (si se proporciona)
+        if (!empty($data['url_sitio']) && !filter_var($data['url_sitio'], FILTER_VALIDATE_URL)) {
             $this->errors[] = "La URL del sitio web no es válida.";
+        }
+
+        // Validación de longitud de campos
+        if (strlen($data['nombre']) > 100) {
+            $this->errors[] = "El nombre no debe exceder los 100 caracteres.";
+        }
+        if (strlen($data['apellido']) > 100) {
+            $this->errors[] = "El apellido no debe exceder los 100 caracteres.";
+        }
+        if (strlen($data['telefono']) > 20) {
+            $this->errors[] = "El teléfono no debe exceder los 20 caracteres.";
+        }
+        if (strlen($data['email']) > 100) {
+            $this->errors[] = "El email no debe exceder los 100 caracteres.";
+        }
+        if (strlen($data['empresa']) > 100) {
+            $this->errors[] = "El nombre de la empresa no debe exceder los 100 caracteres.";
+        }
+        if (strlen($data['pais']) > 50) {
+            $this->errors[] = "El país no debe exceder los 50 caracteres.";
+        }
+
+        // Validación de ENUM
+        $validPresupuestos = ['Bajo', 'Medio', 'Alto'];
+        $validFacturaciones = ['Baja', 'Media', 'Alta'];
+
+        if (!in_array($data['presupuesto'], $validPresupuestos)) {
+            $this->errors[] = "El valor del presupuesto no es válido.";
+        }
+        if (!in_array($data['facturacion'], $validFacturaciones)) {
+            $this->errors[] = "El valor de la facturación no es válido.";
         }
 
         return empty($this->errors);
@@ -71,7 +107,7 @@ class ContactFormController {
                 $data['email'],
                 $data['empresa'],
                 $data['pais'],
-                $data['url_sitio'],
+                !empty($data['url_sitio']) ? $data['url_sitio'] : null,
                 $data['presupuesto'],
                 $data['facturacion'],
                 $data['problema']
@@ -93,11 +129,9 @@ class ContactFormController {
 }
 
 // Inicialización
-require_once 'conexion.php';
 $controller = new ContactFormController($pdo);
 $controller->processForm();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -106,209 +140,49 @@ $controller->processForm();
     <meta name="description" content="Contacta a Compu IT Marketing para recibir consultoría gratuita y soluciones personalizadas en marketing digital.">
     <meta name="keywords" content="contacto, consultoría gratuita, marketing digital, Compu IT Marketing">
     <title>Formulario de Contacto | Compu IT Marketing</title>
-    <link rel="preload" href="css/contactos.css" as="style">
     <link rel="stylesheet" href="css/contactos.css">
-    <?php include('includes/header.php'); ?>
 </head>
 <body>
-    <div class="main-content">
-        <?php include 'includes/sidebar.php'; ?>
+    <div class="form-container">
+        <h2>Formulario de Contacto</h2>
 
-        <main>
-            <!-- Sección de Bienvenida -->
-            <section class="welcome-section">
-                <h1>ESTAMOS AQUÍ PARA TI</h1>
-                <p>Queremos escuchar sobre tus necesidades y ayudarte a alcanzar tus objetivos empresariales.</p>
-            </section>
+        <?php if ($controller->isSuccess()): ?>
+            <div class="alert alert-success">Tu consulta ha sido enviada exitosamente.</div>
+        <?php endif; ?>
 
-            <!-- Contenedor del Formulario -->
-            <div class="form-container">
-    <h2>Formulario de Contacto</h2>
-    <p class="subtitle">Completa el formulario para agendar tu consultoría gratuita y descubre cómo podemos ayudarte a mejorar tu negocio.</p>
-    
-    <?php if ($controller->isSuccess()): ?>
-        <div class="alert alert-success">
-            Tu consulta ha sido enviada exitosamente.
-        </div>
-    <?php endif; ?>
+        <?php if (!empty($controller->getErrors())): ?>
+            <div class="alert alert-error">
+                <ul>
+                    <?php foreach ($controller->getErrors() as $error): ?>
+                        <li><?php echo htmlspecialchars($error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
-    <?php if (!empty($controller->getErrors())): ?>
-        <div class="alert alert-error">
-            <ul>
-                <?php foreach ($controller->getErrors() as $error): ?>
-                    <li><?php echo htmlspecialchars($error); ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif; ?>
-
-    <form class="form-section" method="POST" novalidate>
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" 
-                   id="nombre" 
-                   name="nombre" 
-                   required 
-                   placeholder="Tu nombre"
-                   value="<?php echo $_POST['nombre'] ?? ''; ?>"
-                   pattern="[a-zA-Z\s]{1,50}" 
-                   title="Solo se permiten letras y espacios. Máximo 50 caracteres.">
-        </div>
-
-        <div class="form-group">
-            <label for="apellido">Apellido</label>
-            <input type="text" 
-                   id="apellido" 
-                   name="apellido" 
-                   required 
-                   placeholder="Tu apellido"
-                   value="<?php echo $_POST['apellido'] ?? ''; ?>"
-                   pattern="[a-zA-Z\s]{1,50}" 
-                   title="Solo se permiten letras y espacios. Máximo 50 caracteres.">
-        </div>
-
-        <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="tel" 
-                   id="telefono" 
-                   name="telefono" 
-                   required 
-                   placeholder="Tu teléfono"
-                   value="<?php echo $_POST['telefono'] ?? ''; ?>"
-                   pattern="\d{10,15}" 
-                   title="Solo se permiten números con una longitud entre 10 y 15 dígitos.">
-        </div>
-
-        <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input type="email" 
-                   id="email" 
-                   name="email" 
-                   required 
-                   placeholder="tu@email.com"
-                   value="<?php echo $_POST['email'] ?? ''; ?>">
-        </div>
-
-        <div class="form-group">
-            <label for="empresa">Empresa</label>
-            <input type="text" 
-                   id="empresa" 
-                   name="empresa" 
-                   required 
-                   placeholder="Nombre de tu empresa"
-                   value="<?php echo $_POST['empresa'] ?? ''; ?>"
-                   pattern="[a-zA-Z0-9\s]{1,50}" 
-                   title="Solo se permiten letras, números y espacios. Máximo 50 caracteres.">
-        </div>
-
-        <div class="form-group">
-            <label for="presupuesto">Presupuesto mensual</label>
-            <select id="presupuesto" name="presupuesto" required>
-                <option value="">Selecciona el presupuesto</option>
-                <?php
-                $presupuestos = ['Bajo', 'Medio', 'Alto'];
-                foreach ($presupuestos as $p): ?>
-                    <option value="<?php echo $p; ?>" 
-                        <?php echo (isset($_POST['presupuesto']) && $_POST['presupuesto'] === $p) ? 'selected' : ''; ?>>
-                        <?php echo $p; ?>
-                    </option>
-                <?php endforeach; ?>
+        <form method="POST" novalidate>
+            <input type="text" name="nombre" placeholder="Nombre" value="<?php echo $_POST['nombre'] ?? ''; ?>" required>
+            <input type="text" name="apellido" placeholder="Apellido" value="<?php echo $_POST['apellido'] ?? ''; ?>" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" value="<?php echo $_POST['telefono'] ?? ''; ?>" required>
+            <input type="email" name="email" placeholder="Correo electrónico" value="<?php echo $_POST['email'] ?? ''; ?>" required>
+            <input type="text" name="empresa" placeholder="Empresa" value="<?php echo $_POST['empresa'] ?? ''; ?>" required>
+            <input type="text" name="pais" placeholder="País" value="<?php echo $_POST['pais'] ?? ''; ?>" required>
+            <input type="url" name="url_sitio" placeholder="URL del sitio web" value="<?php echo $_POST['url_sitio'] ?? ''; ?>">
+            <select name="presupuesto" required>
+                <option value="">Presupuesto</option>
+                <option value="Bajo" <?php echo ($_POST['presupuesto'] ?? '') === 'Bajo' ? 'selected' : ''; ?>>Bajo</option>
+                <option value="Medio" <?php echo ($_POST['presupuesto'] ?? '') === 'Medio' ? 'selected' : ''; ?>>Medio</option>
+                <option value="Alto" <?php echo ($_POST['presupuesto'] ?? '') === 'Alto' ? 'selected' : ''; ?>>Alto</option>
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="facturacion">Facturación actual</label>
-            <select id="facturacion" name="facturacion" required>
-                <option value="">Selecciona la facturación</option>
-                <?php
-                $facturaciones = ['Baja', 'Media', 'Alta'];
-                foreach ($facturaciones as $f): ?>
-                    <option value="<?php echo $f; ?>"
-                        <?php echo (isset($_POST['facturacion']) && $_POST['facturacion'] === $f) ? 'selected' : ''; ?>>
-                        <?php echo $f; ?>
-                    </option>
-                <?php endforeach; ?>
+            <select name="facturacion" required>
+                <option value="">Facturación</option>
+                <option value="Baja" <?php echo ($_POST['facturacion'] ?? '') === 'Baja' ? 'selected' : ''; ?>>Baja</option>
+                <option value="Media" <?php echo ($_POST['facturacion'] ?? '') === 'Media' ? 'selected' : ''; ?>>Media</option>
+                <option value="Alta" <?php echo ($_POST['facturacion'] ?? '') === 'Alta' ? 'selected' : ''; ?>>Alta</option>
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="pais">País</label>
-            <input type="text" 
-                   id="pais" 
-                   name="pais" 
-                   required 
-                   placeholder="Tu país"
-                   value="<?php echo $_POST['pais'] ?? ''; ?>"
-                   pattern="[a-zA-Z\s]{1,50}" 
-                   title="Solo se permiten letras y espacios. Máximo 50 caracteres.">
-        </div>
-
-        <div class="form-group">
-            <label for="url_sitio">URL del sitio web</label>
-            <input type="url" 
-                   id="url_sitio" 
-                   name="url_sitio" 
-                   required 
-                   placeholder="https://tusitio.com"
-                   value="<?php echo $_POST['url_sitio'] ?? ''; ?>">
-        </div>
-
-        <div class="form-group">
-            <label for="problema">¿Qué problema enfrenta hoy tu empresa?</label>
-            <textarea id="problema" 
-                      name="problema" 
-                      rows="4" 
-                      required 
-                      placeholder="Cuéntanos sobre tu problema..."><?php echo $_POST['problema'] ?? ''; ?></textarea>
-        </div>
-
-        <button type="submit" class="submit-button">¡Agenda tu consultoría gratuita!</button>
-    </form>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const restrictInput = (element, regex) => {
-        element.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(regex, '');
-        });
-    };
-
-    restrictInput(document.getElementById('nombre'), /[^a-zA-Z\s]/g);
-    restrictInput(document.getElementById('apellido'), /[^a-zA-Z\s]/g);
-    restrictInput(document.getElementById('telefono'), /[^0-9]/g);
-    restrictInput(document.getElementById('empresa'), /[^a-zA-Z0-9\s]/g);
-    restrictInput(document.getElementById('pais'), /[^a-zA-Z\s]/g);
-});
-</script>
-
-    
-
-    <?php include('includes/footer.php'); ?>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.querySelector('.form-section');
-        
-        form.addEventListener('submit', (e) => {
-            const inputs = form.querySelectorAll('input, select, textarea');
-            let isValid = true;
-
-            inputs.forEach(input => {
-                if (input.hasAttribute('required') && !input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                } else {
-                    input.classList.remove('error');
-                }
-            });
-
-            if (!isValid) {
-                e.preventDefault();
-                alert('Por favor, completa todos los campos requeridos.');
-            }
-        });
-    });
-    </script>
+            <textarea name="problema" placeholder="¿Qué problema enfrenta tu empresa?" required><?php echo $_POST['problema'] ?? ''; ?></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 </body>
 </html>
