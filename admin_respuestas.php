@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Respuestas de Formularios - Admin</title>
+    <title>Panel de Respuestas - Admin</title>
     <link rel="stylesheet" href="css/admin_respuestas.css">
 </head>
 <body>
@@ -18,97 +18,100 @@
     </div>
 
     <div class="main-content">
-        <h1>Respuestas de Formularios</h1>
+        <h1>Panel de Respuestas</h1>
+        <p>Gestiona las respuestas recibidas de los formularios de contacto y solicitudes para unirte a nuestro equipo.</p>
 
-        <!-- Mostrar mensajes -->
-        <?php if (isset($mensaje)): ?>
-            <p style="color: green; text-align: center;"><?php echo htmlspecialchars($mensaje); ?></p>
-        <?php endif; ?>
-        <?php if (isset($error)): ?>
-            <p style="color: red; text-align: center;"><?php echo htmlspecialchars($error); ?></p>
-        <?php endif; ?>
-
-        <!-- Tabla de Contactos -->
-        <h2>Respuestas de Contacto</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Empresa</th>
-                    <th>Problema</th>
-                    <th>Fecha</th>
-                    <th>Acción</th> <!-- Columna para botones -->
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $stmtContactos->fetch(PDO::FETCH_ASSOC)) : ?>
+        <!-- Sección de Contactos -->
+        <div class="card">
+            <h2>Respuestas de Contacto</h2>
+            <p class="subtitle">Aquí puedes revisar los mensajes enviados desde el formulario de contacto.</p>
+            <table>
+                <thead>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['id']); ?></td>
-                        <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                        <td><?php echo htmlspecialchars($row['apellido']); ?></td>
-                        <td><?php echo htmlspecialchars($row['email']); ?></td>
-                        <td><?php echo htmlspecialchars($row['telefono']); ?></td>
-                        <td><?php echo htmlspecialchars($row['empresa']); ?></td>
-                        <td><?php echo htmlspecialchars($row['problema']); ?></td>
-                        <td><?php echo htmlspecialchars($row['fecha']); ?></td>
-                        <td>
-                            <!-- Botón de Eliminar -->
-                            <form method="POST" style="display:inline;">
-                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                <input type="hidden" name="tabla" value="contactanos">
-                                <button type="submit" name="eliminar" style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
-                                    Eliminar
-                                </button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Empresa</th>
+                        <th>Problema</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
                     </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php while ($row = $stmtContactos->fetch(PDO::FETCH_ASSOC)) : ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+                            <td><?php echo htmlspecialchars($row['apellido']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['telefono']); ?></td>
+                            <td><?php echo htmlspecialchars($row['empresa']); ?></td>
+                            <td><?php echo htmlspecialchars($row['problema']); ?></td>
+                            <td><?php echo htmlspecialchars($row['fecha']); ?></td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                    <input type="hidden" name="tabla" value="contactanos">
+                                    <button type="submit" name="eliminar" class="delete">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Tabla de Unete -->
-        <h2>Respuestas de Únete</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Motivo</th>
-                    <th>Fecha</th>
-                    <th>Acción</th> <!-- Columna para botones -->
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $stmtUnete->fetch(PDO::FETCH_ASSOC)) : ?>
+        <!-- Sección de Únete -->
+        <div class="card">
+            <h2>Respuestas de Únete</h2>
+            <p class="subtitle">Consulta las solicitudes enviadas para formar parte de nuestro equipo.</p>
+            <table>
+                <thead>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['id']); ?></td>
-                        <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                        <td><?php echo htmlspecialchars($row['apellido']); ?></td>
-                        <td><?php echo htmlspecialchars($row['email']); ?></td>
-                        <td><?php echo htmlspecialchars($row['telefono']); ?></td>
-                        <td><?php echo htmlspecialchars($row['motivo']); ?></td>
-                        <td><?php echo htmlspecialchars($row['fecha']); ?></td>
-                        <td>
-                            <!-- Botón de Eliminar -->
-                            <form method="POST" style="display:inline;">
-                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                <input type="hidden" name="tabla" value="unete">
-                                <button type="submit" name="eliminar" style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
-                                    Eliminar
-                                </button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Mensaje</th>
+                        <th>CV</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
                     </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php while ($row = $stmtUnete->fetch(PDO::FETCH_ASSOC)) : ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['telefono']); ?></td>
+                            <td><?php echo htmlspecialchars($row['mensaje']); ?></td>
+                            <td>
+                                <?php if (!empty($row['cv_path'])): ?>
+                                    <a href="<?php echo htmlspecialchars($row['cv_path']); ?>" target="_blank">Ver CV</a>
+                                <?php else: ?>
+                                    No disponible
+                                <?php endif; ?>
+                            </td>
+                            <td><?php echo htmlspecialchars($row['fecha']); ?></td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                    <input type="hidden" name="tabla" value="unete">
+                                    <button type="submit" name="eliminar" class="delete">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
