@@ -96,6 +96,10 @@ th {
     text-transform: uppercase;
 }
 
+td {
+    color: #2c3e50; /* Texto visible en color oscuro */
+}
+
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
@@ -118,15 +122,6 @@ button:hover {
     transform: translateY(-2px);
 }
 
-button.edit {
-    background-color: var(--secondary-color);
-    color: #fff;
-}
-
-button.edit:hover {
-    background-color: #2980b9;
-}
-
 button.delete {
     background-color: var(--danger-color);
     color: #fff;
@@ -136,42 +131,10 @@ button.delete:hover {
     background-color: #c0392b;
 }
 
-button.confirm {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-button.confirm:hover {
-    background-color: #16a085;
-}
-
 p {
     text-align: center;
     color: #888;
     margin: 20px 0;
-}
-
-/* Estilo para los formularios */
-form {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-input[type="text"] {
-    padding: 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    font-size: 1rem;
-    width: 100%;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
 /* Responsivo */

@@ -145,16 +145,7 @@ $stmtUnete = $pdo->query($queryUnete);
                                     Eliminar
                                 </button>
                             </form>
-                            <!-- Botón de Editar -->
-                            <form method="POST" style="display:inline;">
-                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                <input type="hidden" name="tabla" value="contactanos">
-                                <input type="text" name="nombre" placeholder="Nuevo Nombre" required>
-                                <input type="text" name="apellido" placeholder="Nuevo Apellido" required>
-                                <button type="submit" name="editar" style="background-color: orange; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
-                                    Editar
-                                </button>
-                            </form>
+                          
                         </td>
                     </tr>
                 <?php endwhile; ?>
