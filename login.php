@@ -8,38 +8,34 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+    <div class="login-container">
+        <!-- Logo -->
+        <div class="logo-wrapper">
+            <img src="img/logo.jpg" alt="CompuIT Logo" class="logo-image">
+        </div>
 
-
-        <h1>Iniciar Sesión</h1>
+        <h1>Bienvenido a CompuIT</h1>
+        <p class="subtitle">Por favor, inicia sesión para continuar</p>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <!-- Campo Usuario -->
             <div class="input-group">
-                <input type="text" 
-                       id="username" 
-                       name="username" 
-                       placeholder="Usuario" 
-                       required 
-                       autocomplete="username">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
             </div>
 
             <!-- Campo Contraseña -->
             <div class="input-group">
-                <input type="password" 
-                       id="password" 
-                       name="password" 
-                       placeholder="Contraseña" 
-                       required 
-                       autocomplete="current-password">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
             </div>
 
             <!-- Botón de Ingreso -->
-            <button type="submit" name="login">Ingresar</button>
+            <button type="submit" name="login">Iniciar Sesión</button>
 
             <!-- Enlace de Registro -->
             <div class="register-link">
-                ¿No tienes cuenta? 
-                <a href="registro.php">Regístrate aquí</a>
+                ¿No tienes cuenta? <a href="registro.php">Regístrate aquí</a>
             </div>
         </form>
 
@@ -85,11 +81,9 @@
                 $stmt->close();
             } catch (Exception $e) {
                 echo "<div class='error-message'>Error en el sistema. Por favor, intente más tarde.</div>";
-                // Log del error para el administrador
                 error_log("Error en login.php: " . $e->getMessage());
             }
 
-            // Cerrar la conexión
             $conn->close();
         }
         ?>

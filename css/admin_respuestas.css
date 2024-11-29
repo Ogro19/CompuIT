@@ -1,12 +1,13 @@
 :root {
     --primary-color: #1abc9c; /* Verde primario */
-    --background-color: #ecf0f1; /* Fondo claro */
+    --background-color: #f5f5f5; /* Fondo claro */
     --card-background: #ffffff; /* Fondo de las tarjetas */
     --table-header-color: #16a085; /* Verde oscuro */
     --text-color: #2c3e50; /* Texto oscuro */
     --secondary-color: #3498db; /* Azul secundario */
-    --hover-color: #2ecc71; /* Verde claro para hover */
+    --hover-color: #e0f7fa; /* Verde claro para hover */
     --danger-color: #e74c3c; /* Rojo para botones de eliminar */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
 }
 
 body {
@@ -27,49 +28,50 @@ header, footer {
     text-align: center;
 }
 
-.admin-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+.container {
+    width: 90%;
+    max-width: 1200px;
     margin: 30px auto;
-    padding: 20px;
-    background-color: var(--card-background);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .sidebar {
-    width: 250px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 0 0 250px;
+    background-color: var(--card-background);
+    box-shadow: 0 4px 12px var(--shadow-color);
     padding: 15px;
     border-radius: 8px;
 }
 
 .main-content {
-    flex-grow: 1;
-    background-color: #fff;
+    flex: 1;
+    background-color: var(--card-background);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 h1 {
     text-align: center;
     color: var(--primary-color);
     font-size: 2.4rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
+    color: var(--secondary-color);
 }
 
-.section {
-    margin-top: 30px;
-    font-size: 1rem;
+.card {
+    margin-bottom: 30px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 20px;
 }
 
 table {
@@ -97,7 +99,7 @@ th {
 }
 
 td {
-    color: #2c3e50; /* Texto visible en color oscuro */
+    color: var(--text-color);
 }
 
 tr:nth-child(even) {
@@ -106,20 +108,22 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: var(--hover-color);
-    color: #fff;
+    color: var(--text-color);
 }
 
 button {
     padding: 10px 15px;
     font-size: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px var(--shadow-color);
 }
 
 button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 10px var(--shadow-color);
 }
 
 button.delete {
@@ -139,18 +143,12 @@ p {
 
 /* Responsivo */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    .admin-container {
+    .container {
         flex-direction: column;
-        gap: 10px;
     }
 
     .sidebar {
         width: 100%;
-        box-shadow: none;
         margin-bottom: 20px;
     }
 
