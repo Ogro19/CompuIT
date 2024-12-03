@@ -88,6 +88,9 @@
                 </thead>
                 <tbody>
                     <?php
+
+// Incluir la conexión a la base de datos
+include('conexion.php');
                     // Consulta de la tabla contactanos
                     $stmtContactos = $pdo->query("SELECT id, nombre, apellido, email, telefono, empresa, problema, fecha FROM contactanos");
                     while ($row = $stmtContactos->fetch(PDO::FETCH_ASSOC)) : ?>
