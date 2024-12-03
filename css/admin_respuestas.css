@@ -135,6 +135,15 @@ button.delete:hover {
     background-color: #c0392b;
 }
 
+button.edit {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+button.edit:hover {
+    background-color: #2980b9;
+}
+
 p {
     text-align: center;
     color: #888;

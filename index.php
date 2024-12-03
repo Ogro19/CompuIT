@@ -120,7 +120,7 @@
             <a href="servicios.php" class="services-button" data-tracking="services-cta">Más sobre nuestras soluciones</a>
         </section>
 
-        <!-- Marketing Info Section -->
+        <!-- Marketing seccion -->
         <section class="info-marketing" aria-label="Nuestra propuesta">
             <h2>Posicionamos Líderes</h2>
             <div class="marketing-content">
@@ -134,7 +134,7 @@
             </div>
         </section>
 
-        <!-- How We Do It Section -->
+        <!-- seccion Como lo hacemos  -->
         <section class="how-we-do-it" aria-label="Nuestra metodología">
             <header class="section-header">
                 <h2>¿Cómo lo Hacemos?</h2>
