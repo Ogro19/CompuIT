@@ -6,6 +6,7 @@
     <title>Panel de Respuestas - Admin</title>
     <link rel="stylesheet" href="css/admin_respuestas.css">
     <script>
+        // Función para confirmar acciones (modificar/eliminar)
         function confirmarAccion(accion) {
             return confirm(`¿Estás seguro de que deseas ${accion} este registro?`);
         }
@@ -42,28 +43,36 @@
                 </thead>
                 <tbody>
                     <?php
-                    // Consulta de la tabla usuarios
-                    $stmtUsuarios = $pdo->query("SELECT id, username, email, password FROM usuarios");
-                    while ($row = $stmtUsuarios->fetch(PDO::FETCH_ASSOC)) : ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><?php echo htmlspecialchars($row['username']); ?></td>
-                            <td><?php echo htmlspecialchars($row['email']); ?></td>
-                            <td><?php echo htmlspecialchars($row['password']); ?></td>
-                            <td>
-                                <form method="POST" action="modificar.php" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="tabla" value="usuarios">
-                                    <button type="submit" name="modificar" class="edit" onclick="return confirmarAccion('modificar')">Modificar</button>
-                                </form>
-                                <form method="POST" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="tabla" value="usuarios">
-                                    <button type="submit" name="eliminar" class="delete" onclick="return confirmarAccion('eliminar')">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
+                    // Incluir la conexión a la base de datos
+                    include('conexion.php');
+                    
+                    try {
+                        // Consulta de la tabla usuarios
+                        $stmtUsuarios = $pdo->query("SELECT id, username, email, password FROM usuarios");
+                        while ($row = $stmtUsuarios->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['username']); ?></td>
+                                <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                <td><?php echo htmlspecialchars($row['password']); ?></td>
+                                <td>
+                                    <form method="POST" action="modificar.php" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                        <input type="hidden" name="tabla" value="usuarios">
+                                        <button type="submit" name="modificar" class="edit" onclick="return confirmarAccion('modificar')">Modificar</button>
+                                    </form>
+                                    <form method="POST" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                        <input type="hidden" name="tabla" value="usuarios">
+                                        <button type="submit" name="eliminar" class="delete" onclick="return confirmarAccion('eliminar')">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endwhile;
+                    } catch (PDOException $e) {
+                        echo "<tr><td colspan='5'>Error al obtener los datos de usuarios: " . $e->getMessage() . "</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -88,34 +97,37 @@
                 </thead>
                 <tbody>
                     <?php
-
-include('conexion.php');
-                    // Consulta de la tabla contactanos
-                    $stmtContactos = $pdo->query("SELECT id, nombre, apellido, email, telefono, empresa, problema, fecha FROM contactanos");
-                    while ($row = $stmtContactos->fetch(PDO::FETCH_ASSOC)) : ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                            <td><?php echo htmlspecialchars($row['apellido']); ?></td>
-                            <td><?php echo htmlspecialchars($row['email']); ?></td>
-                            <td><?php echo htmlspecialchars($row['telefono']); ?></td>
-                            <td><?php echo htmlspecialchars($row['empresa']); ?></td>
-                            <td><?php echo htmlspecialchars($row['problema']); ?></td>
-                            <td><?php echo htmlspecialchars($row['fecha']); ?></td>
-                            <td>
-                                <form method="POST" action="modificar.php" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="tabla" value="contactanos">
-                                    <button type="submit" name="modificar" class="edit" onclick="return confirmarAccion('modificar')">Modificar</button>
-                                </form>
-                                <form method="POST" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="tabla" value="contactanos">
-                                    <button type="submit" name="eliminar" class="delete" onclick="return confirmarAccion('eliminar')">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
+                    try {
+                        // Consulta de la tabla contactanos
+                        $stmtContactos = $pdo->query("SELECT id, nombre, apellido, email, telefono, empresa, problema, fecha FROM contactanos");
+                        while ($row = $stmtContactos->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+                                <td><?php echo htmlspecialchars($row['apellido']); ?></td>
+                                <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                <td><?php echo htmlspecialchars($row['telefono']); ?></td>
+                                <td><?php echo htmlspecialchars($row['empresa']); ?></td>
+                                <td><?php echo htmlspecialchars($row['problema']); ?></td>
+                                <td><?php echo htmlspecialchars($row['fecha']); ?></td>
+                                <td>
+                                    <form method="POST" action="modificar.php" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                        <input type="hidden" name="tabla" value="contactanos">
+                                        <button type="submit" name="modificar" class="edit" onclick="return confirmarAccion('modificar')">Modificar</button>
+                                    </form>
+                                    <form method="POST" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                        <input type="hidden" name="tabla" value="contactanos">
+                                        <button type="submit" name="eliminar" class="delete" onclick="return confirmarAccion('eliminar')">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endwhile;
+                    } catch (PDOException $e) {
+                        echo "<tr><td colspan='9'>Error al obtener los datos de contactos: " . $e->getMessage() . "</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -139,37 +151,42 @@ include('conexion.php');
                 </thead>
                 <tbody>
                     <?php
-                    // Consulta de la tabla unete
-                    $stmtUnete = $pdo->query("SELECT id, nombre, email, telefono, mensaje, cv_path, fecha FROM unete");
-                    while ($row = $stmtUnete->fetch(PDO::FETCH_ASSOC)) : ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                            <td><?php echo htmlspecialchars($row['email']); ?></td>
-                            <td><?php echo htmlspecialchars($row['telefono']); ?></td>
-                            <td><?php echo htmlspecialchars($row['mensaje']); ?></td>
-                            <td>
-                                <?php if (!empty($row['cv_path'])): ?>
-                                    <a href="<?php echo htmlspecialchars($row['cv_path']); ?>" target="_blank">Ver CV</a>
-                                <?php else: ?>
-                                    No disponible
-                                <?php endif; ?>
-                            </td>
-                            <td><?php echo htmlspecialchars($row['fecha']); ?></td>
-                            <td>
-                                <form method="POST" action="modificar.php" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="tabla" value="unete">
-                                    <button type="submit" name="modificar" class="edit" onclick="return confirmarAccion('modificar')">Modificar</button>
-                                </form>
-                                <form method="POST" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="tabla" value="unete">
-                                    <button type="submit" name="eliminar" class="delete" onclick="return confirmarAccion('eliminar')">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
+                    try {
+                        // Consulta de la tabla unete
+                        $stmtUnete = $pdo->query("SELECT id, nombre, email, telefono, mensaje, cv_path, fecha FROM unete");
+                        while ($row = $stmtUnete->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+                                <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                <td><?php echo htmlspecialchars($row['telefono']); ?></td>
+                                <td><?php echo htmlspecialchars($row['mensaje']); ?></td>
+                                <td>
+                                    <?php if (!empty($row['cv_path'])): ?>
+                                        <a href="<?php echo htmlspecialchars($row['cv_path']); ?>" target="_blank">Ver CV</a>
+                                    <?php else: ?>
+                                        No disponible
+                                    <?php endif; ?>
+                                </td>
+                                <td><?php echo htmlspecialchars($row['fecha']); ?></td>
+                                <td>
+                                    <form method="POST" action="modificar.php" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                        <input type="hidden" name="tabla" value="unete">
+                                        <button type="submit" name="modificar" class="edit" onclick="return confirmarAccion('modificar')">Modificar</button>
+                                    </form>
+                                    <form method="POST" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                        <input type="hidden" name="tabla" value="unete">
+                                        <button type="submit" name="eliminar" class="delete" onclick="return confirmarAccion('eliminar')">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endwhile;
+                    } catch (PDOException $e) {
+                        echo "<tr><td colspan='8'>Error al obtener los datos de Únete: " . $e->getMessage() . "</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
