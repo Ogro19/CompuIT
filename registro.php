@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $imageType = $_FILES['profileImage']['type'];
             $imageSize = $_FILES['profileImage']['size'];
 
-            if (in_array($imageType, $allowedTypes) && $imageSize <= 500000) {
+            if (in_array($imageType, $allowedTypes) && $imageSize <=  2097152) {
                 $imageName = uniqid() . '_' . basename($_FILES['profileImage']['name']);
                 $imageTmpName = $_FILES['profileImage']['tmp_name'];
                 $imageFolder = 'uploads/' . $imageName;
