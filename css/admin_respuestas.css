@@ -45,6 +45,7 @@ header, footer {
     border-radius: 8px;
 }
 
+
 .main-content {
     flex: 1;
     background-color: var(--card-background);
