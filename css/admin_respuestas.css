@@ -9,6 +9,31 @@
     --danger-color: #e74c3c; /* Rojo para botones de eliminar */
     --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
 }
+/* Color de las letras en los campos de formulario */
+input, textarea, select, button {
+    color: #000000; /* Color negro para el texto */
+}
+
+/* Etiquetas (labels) */
+label {
+    color: #000000; /* Color negro para las etiquetas */
+}
+
+/* Estilo adicional para los campos */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #ccc; /* Borde gris claro */
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 4px;
+    color: #000000; /* Color negro para el texto */
+}
+
+/* Al enfocar los campos */
+input:focus, textarea:focus {
+    border-color: #3498db; /* Borde azul para indicar que está enfocado */
+    outline: none; /* Elimina el contorno predeterminado */
+}
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
